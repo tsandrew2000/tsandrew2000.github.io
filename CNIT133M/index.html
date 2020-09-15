@@ -10,12 +10,26 @@
 
   gtag('config', 'UA-176560689-1');
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+      $(document).ready(function(){
+        $("button").click(function(){
+         var h1 = $("h1");  
+         h1.animate({"font-size": "50px"}, 2000);
+         h1.animate({"font-size": "32px"}, 2000,
+            function(){
+              $("h1").css({"color": "blue"})
+              $("img").css({ "border": "3px", "border-color": "blue", "border-style": "solid"});
+            }
+         );
+        });
+      });
+      </script>
+
 <link rel="stylesheet" type="text/css" href="style.css">
 <meta charset="utf-8">
-<meta name="description" content="Mini Project 1">
+<meta name="description" content="Mobile Web with HTML/CSS">
 <meta name="author" content="Andrey Tsvirko">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -61,6 +75,8 @@ Date: May 11th, 2020 -->
 <li>
 <a href="https://www.coursera.org" target="_blank">Coursera</a> is a popular online learning platform where all the courses are free. It was founded by Stanford professors Daphne Koller and Andrew Ng. Coursera works with the top educational institutions in the world that provide over 1000 courses to Coursera.</li>
 </ul>
+<button>Animation</button>
+
 </div>  
 
 
