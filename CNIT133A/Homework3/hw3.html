@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="D3 homework">
+<title>D3 Homework</title>
+<style>
+#chart rect{
+  fill: #4aaeea;
+}
+
+#chart text{
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end; 
+}
+
+.axis text{
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line{
+  fill: none;
+  stroke : #fff;
+  shape-rendering: crispEdges;
+}
+
+body{
+  background: #1a1a1a;
+  color : #eaeaea;
+  padding : 10px;
+}
+</style>
+</head>
+<body>
+<div id="chart"></div> 
+<!-- <script src="https://d3js.org/d3.v5.js"></script> -->
+<script src="d3.min15.js"></script> 
+<script>
+var svg = d3.select("#chart").append("svg")
+  
+  .attr("width", 600)
+  .attr("height", 500)
+  .style("margin-left", 20);
+  // .style('background', '#788180');
+
+var margin = { top: 20, right: 100, bottom: 300, left: 40 };
+var width = 700 - margin.left - margin.right;
+var height = 700 - margin.top - margin.bottom;
+// var barSpace = 4;
+
+var graph = svg.append("g")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+var xS = graph.append("g")
+  .attr("transform", `translate(0, ${height})`);
+var yS = graph.append("g");
+
+//working with json file
+d3.json("hw3data.json").then((data) => {
+  var x = d3.scaleBand()
+    .domain(data.map((item) => item.term))
+    .range([0, width])
+    .padding(0.25);
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(data, (d) => d.students)])
+    .range([height, 0]);
+
+  graph.selectAll("rect").data(data)
+    .enter().append("rect")
+    .attr("width", x.bandwidth)
+    .attr("x", (d) => x(d.term))
+    .attr("height", (d) =>height - y(d.students))
+    .attr("y", (d) => y(d.students))
+  var xAxis = d3.axisBottom(x);
+  var yAxis = d3.axisLeft(y).ticks(5);
+  xS.call(xAxis);
+  yS.call(yAxis);
+});
+</script>
+</body>
+</html>
