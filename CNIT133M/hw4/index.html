@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PWA, Offline Homework</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="PWA, Manifest, and Offline by Andrey Tsvirko">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="gold"/>
+
+</head>
+<body>
+<h1>
+    PWA, Offline Homework
+</h1>
+<h2>Characteristics of PWA</h2>
+<p>There are some distinguished characteristics and attributes that make an app a PWA. Below are some progressive web apps features: </p>
+<p>Progressive<br>
+
+  A progressive web app should work on any device and operating system. The app enhances progressively taking advantage of any features available on the user’s device and browser. The method of gradual improvement is a basic principle of how a PWA operates. </p>
+<p>Responsive <br>
+  A PWAs UI must fit any form factor and screen size. A progressive web app looks good regardless of the device, has a near native look and feel and offers a seamless experience across all devices. 
+</p>
+<p>Safe <br>
+  Since a progressive web app renders a more intimate user experience, so to prevent spoofing and interception of data, the app is hosted over HTTPS.</p>
+
+<form>
+    Background color:
+    <select id="background" onchange="updateBackgroundColour(this)">
+      <option value="blue" >Blue</option>
+      <option value="gold" >Gold</option>
+    </select>
+  <form>
+
+<script>
+function updateBackgroundColour(selectElem) {
+  var item = document.getElementById('background').value
+
+  if (item == 'blue'){
+    document.body.style.backgroundImage = "url('lightblue.jpg')";
+  }
+  if (item == 'gold'){
+    document.body.style.backgroundImage = "url('lightgold.jpg')";
+  }
+  
+}
+</script>
+<script src="main.js"></script>
+</body>
+</html>
