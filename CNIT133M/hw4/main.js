@@ -12,12 +12,11 @@ window.addEventListener('load', async e =>{
 
 let deferredPrompt;
 let btnAdd;
-//  = document.querySelector(".button");
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  btnAdd.style.display = "block";
+  // btnAdd.style.display = "block";
 });
 
 btnAdd.addEventListener('click', (e) => {
